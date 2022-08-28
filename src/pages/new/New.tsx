@@ -8,11 +8,14 @@ import NavBar from "../../components/navbar/NavBar";
 import { auth, db, storage } from "../../firebase/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 const New = ({ inputs, title }: any) => {
   const [file, setFile] = useState<any>("");
   const [data, setData] = useState<any>({});
   const [percentage, setPercentage] = useState<any>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const uploadFile = () => {
@@ -72,6 +75,7 @@ const New = ({ inputs, title }: any) => {
         ...data,
         timeStamp: serverTimestamp(),
       });
+      navigate(-1);
     } catch (err: any) {}
   };
 
