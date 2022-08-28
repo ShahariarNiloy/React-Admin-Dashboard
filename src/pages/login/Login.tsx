@@ -21,9 +21,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
         dispatch({ type: "LOGIN", payload: user });
-        console.log(currentUser);
         setError(false);
         navigate("/");
       })
@@ -41,7 +39,6 @@ const Login = () => {
     //     setError(true);
     //   });
   };
-  console.log(currentUser);
   return (
     <div className="login">
       <form onSubmit={handleLogin}>
